@@ -9,10 +9,9 @@ set -ex  # Exit immediately if a command exits with a non-zero status.
 #repourl="https:\/\/oss.sonatype.org\/content\/repositories\/orgrobolectric-1216"
 #repourl="http:\/\/localhost:1480"
 # Versions:                             # axt_versions.bzl equivalents
-buildToolsVersion="32.0.0"
-agpVersion="7.3.1"
-kotlinVersion="1.7.10"                  # KOTLIN_VERSION
-compileSdkVersion="33"
+agpVersion="8.1.0"
+kotlinVersion="1.8.20"                  # KOTLIN_VERSION
+compileSdk="33"
 targetSdkVersion="33"
 androidxAnnotationVersion="1.5.0"       # ANDROIDX_ANNOTATION_VERSION
 androidxCompatVersion="1.5.1"           # ANDROIDX_COMPAT_VERSION
@@ -21,17 +20,17 @@ androidxFragmentVersion="1.5.3"         # ANDROIDX_FRAGMENT_VERSION
 androidxRecyclerVersion="1.2.1"         # ANDROIDX_RECYCLERVIEW_VERSION
 guavaVersion="31.1-android"           # GUAVA_VERSION
 truthVersion="1.1.3"                    # TRUTH_VERSION
-runnerVersion="1.5.2"           # RUNNER_VERSION
-monitorVersion="1.6.1"          # MONITOR_VERSION
-rulesVersion="1.5.0"            # RULES_VERSION
-servicesVersion="1.4.2"         # SERVICES_VERSION
-orchestratorVersion="1.4.2"     # ORCHESTRATOR_VERSION
-coreVersion="1.5.0"             # CORE_VERSION
-extJUnitVersion="1.1.5"         # ANDROIDX_JUNIT_VERSION
-extTruthVersion="1.5.0"         # ANDROIDX_TRUTH_VERSION
-espressoVersion="3.5.1"         # ESPRESSO_VERSION
-espressoDeviceVersion="1.0.0-alpha03"  # ESPRESSO_DEVICE_VERSION
-robolectricVersion="4.9"
+runnerVersion="1.6.0-alpha03"           # RUNNER_VERSION
+monitorVersion="1.7.0-alpha01"          # MONITOR_VERSION
+rulesVersion="1.6.0-alpha01"            # RULES_VERSION
+servicesVersion="1.5.0-alpha01"         # SERVICES_VERSION
+orchestratorVersion="1.5.0-alpha01"     # ORCHESTRATOR_VERSION
+coreVersion="1.6.0-alpha01"             # CORE_VERSION
+extJUnitVersion="1.2.0-alpha01"         # ANDROIDX_JUNIT_VERSION
+extTruthVersion="1.6.0-alpha01"         # ANDROIDX_TRUTH_VERSION
+espressoVersion="3.6.0-alpha01"         # ESPRESSO_VERSION
+espressoDeviceVersion="1.0.0-alpha04"  # ESPRESSO_DEVICE_VERSION
+robolectricVersion="4.10.3"
 uiAutomatorVersion="2.2.0"              # UIAUTOMATOR_VERSION
 
 for p in $(cat projects.conf); do
@@ -42,7 +41,6 @@ for p in $(cat projects.conf); do
    pushd $p > /dev/null  # Silent pushd
 
    # Replace versions
-   sed -i "s/buildToolsVersion = \([\"']\).*\1/buildToolsVersion = \"$buildToolsVersion\"/" build.gradle
    sed -i "s/agpVersion = \([\"']\).*\1/agpVersion = \"$agpVersion\"/" build.gradle
    sed -i "s/kotlinVersion = \([\"']\).*\1/kotlinVersion = \"$kotlinVersion\"/" build.gradle
    sed -i "s/coreVersion = \([\"']\).*\1/coreVersion = \"$coreVersion\"/" build.gradle
@@ -61,7 +59,7 @@ for p in $(cat projects.conf); do
    sed -i "s/androidxRecyclerVersion = \([\"']\).*\1/androidxRecyclerVersion = \"$androidxRecyclerVersion\"/" build.gradle
    sed -i "s/guavaVersion = \([\"']\).*\1/guavaVersion = \"$guavaVersion\"/" build.gradle
    sed -i "s/truthVersion = \([\"']\).*\1/truthVersion = \"$truthVersion\"/" build.gradle
-   sed -i "s/compileSdkVersion .*/compileSdkVersion $compileSdkVersion/" app/build.gradle
+   sed -i "s/compileSdk .*/compileSdk $compileSdk/" app/build.gradle
    sed -i "s/targetSdkVersion .*/targetSdkVersion $targetSdkVersion/" app/build.gradle
    sed -i "s/uiAutomatorVersion = \([\"']\).*\1/uiAutomatorVersion = \"$uiAutomatorVersion\"/" build.gradle
    sed -i "s/robolectricVersion = \([\"']\).*\1/robolectricVersion = \"$robolectricVersion\"/" build.gradle

@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.application'
+apply plugin: "com.android.application"
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion rootProject.buildToolsVersion
+    compileSdk 33
     defaultConfig {
         applicationId "com.example.android.testing.espresso.RecyclerViewSample"
         minSdkVersion 14
@@ -35,9 +34,6 @@ android {
         targetCompatibility 1.8
     }
 
-    lintOptions {
-        abortOnError false
-    }
     testOptions {
         unitTests {
             includeAndroidResources = true
@@ -55,19 +51,24 @@ android {
             }
         }
     }
+    namespace "com.example.android.testing.espresso.RecyclerViewSample"
+    testNamespace "com.example.android.testing.espresso.RecyclerViewSample.test"
+    lint {
+        abortOnError false
+    }
 }
 
 dependencies {
     // App dependencies
-    implementation 'androidx.annotation:annotation:' + rootProject.androidxAnnotationVersion;
-    implementation 'androidx.recyclerview:recyclerview:' + rootProject.androidxRecyclerVersion;
-    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation "androidx.annotation:annotation:" + rootProject.androidxAnnotationVersion;
+    implementation "androidx.recyclerview:recyclerview:" + rootProject.androidxRecyclerVersion;
+    implementation "androidx.multidex:multidex:2.0.1"
 
     // Testing-only dependencies
-    androidTestImplementation 'androidx.test:core:' + rootProject.coreVersion;
-    androidTestImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion;
-    androidTestImplementation 'androidx.test:runner:' + rootProject.runnerVersion;
-    androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion;
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:' + rootProject.espressoVersion;
+    androidTestImplementation "androidx.test:core:" + rootProject.coreVersion;
+    androidTestImplementation "androidx.test.ext:junit:" + rootProject.extJUnitVersion;
+    androidTestImplementation "androidx.test:runner:" + rootProject.runnerVersion;
+    androidTestImplementation "androidx.test.espresso:espresso-core:" + rootProject.espressoVersion;
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:" + rootProject.espressoVersion;
 
 }
